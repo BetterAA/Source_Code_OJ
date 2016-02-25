@@ -1,0 +1,22 @@
+1.  交换变量的值
+	t=a; a=b; b=t; 
+
+	a=b-a; b=b-a ; a=b+a
+
+	指针地址操作，可以对任意类型
+	*a=new int(10); 
+	*b=new int(20); //&a=0x00001000h,&b=0x00001200h 
+	if(a<b) { 
+	a=(int*)(b-a); 
+	b=(int*)(b-(int(a)&0x0000ffff)); 
+	a=(int*)(b+(int(a)&0x0000ffff)); 
+	} 
+	else { 
+	b=(int*)(a-b); 
+	a=(int*)(a-(int(b)&0x0000ffff)); 
+	b=(int*)(a+(int(b)&0x0000ffff)); 
+	} 
+
+	位运算 a=a^b;b=a^b;a=a^b
+
+
