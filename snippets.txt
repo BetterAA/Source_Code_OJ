@@ -19,4 +19,34 @@
 
 	位运算 a=a^b;b=a^b;a=a^b
 
+2.  判断一个树是不是整数， fmod（x，1）＝＝0或者
+	double x ； x－（int）x ＝＝0
+
+3.  python文件读写
+	# -*- coding: utf-8 -*-
+	from numpy import *
+
+	def dataSplit(filename):
+		dataset = open(filename).readlines()
+		totnum = shape(dataset)[0]
+		print totnum
+		tmpFIle = []
+		for i in range(100):
+			tmpFIle.append(dataset[i])
+
+		outFile = open('/Users/AA/Desktop/testfile','w')	
+		outFile.writelines(tmpFIle)
+		outFile.close()
+	##################################
+	dataMat = [] ; labelMat = []
+    fr = open(filename)
+    for line in fr.readlines():
+        
+        lineArr = []
+        currLine = line.strip().split(',')
+        #print len(currLine),numFeat;raw_input()
+        for i in range(numFeat):
+4. 	python list连接 
+	"/ ".join(seg_list)
+
 
