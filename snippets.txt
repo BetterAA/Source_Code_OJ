@@ -47,6 +47,26 @@
         #print len(currLine),numFeat;raw_input()
         for i in range(numFeat):
 4. 	python list连接 
-	"/ ".join(seg_list)
+	"/ ".join(seg_list) 
 
+5.  vector的遍历 vector的大小（size（））
+	vector<int>::iterator ite = nums.begin();
+     while(ite!=nums.end()){
+     	if(*ite==val){  nums.push_back(0); }
+     	ite++;
+     }
+6. c++中的关于map（key－value）的hash实现方法： unordered_map
+	#include<unordered_map>
+	#include<unordered_set>
+	unordered_map<char,int> count;
+	for(int i=0 ; i<len; i++){
+		//key － value
+		count[s[i]]++;
+		count[t[i]]--;
+	}
+	for(auto cnt : count)
+	//cnt.second即键值中的value
+		if(cnt.second) return false;
+
+	months["september"] 
 
