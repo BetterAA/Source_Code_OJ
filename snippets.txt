@@ -49,12 +49,16 @@
 4. 	python list连接 
 	"/ ".join(seg_list) 
 
-5.  vector的遍历 vector的大小（size（））
+5.  vector的遍历 vector的大小（size（））,取vector的末尾元素
 	vector<int>::iterator ite = nums.begin();
      while(ite!=nums.end()){
      	if(*ite==val){  nums.push_back(0); }
      	ite++;
      }
+     ============================
+     直接写成!!!!!!!!!!!!!!!!!!!!
+     for(auto i : vector)
+
 6. c++中的关于map（key－value）的hash实现方法： unordered_map
 	#include<unordered_map>
 	#include<unordered_set>
@@ -70,3 +74,52 @@
 
 	months["september"] 
 
+	向其中添加pair
+	unordered_map<int,bool> disdict;
+     for(auto num:nums){
+     	if(disdict.find(num)!=disdict.end()){ //only find the key
+     		return true;
+     	}
+     	disdict.insert(make_pair(num, true));//add the pair
+     }
+
+7. python 列表连接 
+	binfo = ['lao','wang','python']
+
+	我们通过help方法得知，可以用string的join方法来解决。
+	下面我们通过空格来连接3个单词：
+	content = " ".join(binfo)
+	print content
+8.  python格式转换
+	int（xx），str（xx）， float（xx）
+9.  序列化列表  解决expected string or Unicode, float found
+	fw.write('%s\n' % ','.join([str(v) for v in c]))
+	tmp.append("%s\t%f"%(tag[0],tag[1]))
+10.  python nicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordinal not in range(128) 编码问题
+	http://wangye.org/blog/archives/629/
+	函数里 reload（sys）
+	sys.setdefaultencoding('utf-8')
+11.  单链表操作的盲区 //盲区：！！  tail= head;意味着两个是一个东西，所以如果改变tail相当于改变head！！
+	//就像newHead = head->next;	 newHead->next = tail;这句，其实也就是改了head－》next－》next！！
+	//重点在下边这句
+	//所以链表操作应该写成 a＝b；b＝c；c＝d这种的！！
+
+12. python追加文件写入
+	fr ＝ open（‘a。txt’，‘a＋’） ／／如果没有的话就创建，有的话就追加
+
+13. c++  取整数每位digit  divident ＝ n％10； n＝ n／10
+14. c++	 如果是1返回true，不是返回false的简洁写法：
+	return res＝＝1；
+15.  c++ 十进制数中二进制的1的个数， n ＝ n&（n－1） ／／每次总是能干掉从右到左的第一个1
+16. c++ 绝对值abs（a）
+17  c++ vector用法 v.pop_back()    删除容器的末元素，并不返回该元素。
+	v.clear()      删除容器中的所有元素
+	vector.begin() .end() 返回迭代器
+	vector.front() .back()
+	排序sort(vec.begin(),vec.end());
+	bool Comp(const int &a,const int &b)
+	{
+	    return a>b;
+	}
+	调用时:sort(vec.begin(),vec.end(),Comp)，这样就降序排序。
+	反转reverse(vec.begin(),vec.end())
