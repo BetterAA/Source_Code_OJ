@@ -123,3 +123,88 @@
 	}
 	调用时:sort(vec.begin(),vec.end(),Comp)，这样就降序排序。
 	反转reverse(vec.begin(),vec.end())
+
+18.  c++ 输出string流
+		ostringstream s;
+        s << bull << "A" << cows << "B"; ／／bull是int
+        return s.str();
+     或者
+     	return to_string（inta）＋“a”；
+
+     输入string流
+     istringstream stream(line);   ／／ line是包含空格的输入流，用stream可以按照空格分开后输入到str中
+        while(stream>>str)  
+            cout<<str.c_str()<<endl;  
+
+19.   	c++ &引用
+		string foo( );
+		void bar(string & s);
+
+		　　那么下面的表达式将是非法的：
+
+		bar(foo( ));
+		bar("hello world");
+
+		　　原因在于foo( )和"hello world"串都会产生一个临时对象，而在C++中，这些临时对象都是const类型的。因此上面的表达式就是试图将一个const类型的对象转换为非const类型，这是非法的。
+
+20.	   c++ 反转单链表 经典做法
+		 ListNode* reverseList(ListNode* head){
+        if(!head) return NULL;
+        listNode* pre=NULL,next=NULL;   
+        //next: next node this pass
+        //pre: now node this pass,  head is reversedNode
+        while(head){
+            next = head->next;
+            head->next = pre;
+            pre = head;
+            head = next; //head backward anyway
+        }
+        return pre;
+    }	
+21.		c++ 判断overflow underflow
+		if(res > INT_MAX/10) return 0; //can cause overflow
+         res *= 10;
+         if(res > (INT_MAX-(tmp))) return 0; //can cause overflow
+         res += tmp;
+22.     c++  prime
+		求《n 的素数的个数， 由很多优化点
+		int countPrimes(int n) {
+        //优化点： 1. 倍树筛素数， 2. 基底不需要到n， 到 根号n就行了，  3.倍树删除的时候，j＝i＊i起步，而不是 j ＝ i＊2起步，因为2的时候已经删过了，这也是为什么2中要根号n,  4. 避免使用sqrt函数，expensive，用for(i=2; i＊i< n; i++)替换
+        bool isPrime[n] ;
+        for(int i=2 ; i<n; i++) isPrime[i] = true;
+        
+        for(int i=2; i*i<n ;i++){
+            if(!isPrime[i]) continue;
+            
+            for(int j = i*i ; j<n ;j+=i)
+                isPrime[j] = false;
+        }
+        int count = 0;
+        for(int i=2 ;i<n ;i++){
+            if(isPrime[i])
+                count++;
+        }
+    	    return count;   
+    }
+23. 　　c++ 二分查询
+		int left = 1, right = n;
+
+		注意点：while里面没有＝ ； left ＝middle＋1而right ＝ middle， 没有加一，只有一边有
+        while(left<right){
+        //注意：如果写成（left＋right）／2的话可能会导致上溢出变负数，这样的话就TLE饿。。
+            int middle = left + (right - left) / 2 ; 
+           
+            if(!isBadVersion(middle)) left = middle+1;
+            else  right = middle;
+        }
+
+
+24.	   xor 异或 
+	   0 ^ a ＝ a
+	   a ^ a ＝ 0
+	   a ^ b 并不是等于0或者1， 他是按照位处理的
+
+25.   位操作： 获取a的二进制中最右的1， 例如a ＝ 110，  获得10
+		int splitTag = xorValue&-xorValue; 
+
+26.   trick 1～N里面平方数的个数就是（int）sqrt（n）
